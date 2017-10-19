@@ -19,7 +19,8 @@ class Spiegel_online_scrape:
         for teaser_article in teaser_content:
             entry = {
                 'author': teaser_article.find_next("span", {"class" : "author"}).text.strip(),
-                'link': teaser_article.find_next("a", href=True)['href']
+                'link': teaser_article.find_next("a", href=True)['href'],
+                'title': teaser_article.find_next("a")['title']
             }
             teaset_json.append(entry)
 
