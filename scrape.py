@@ -6,15 +6,11 @@ from bs4 import BeautifulSoup
 
 class Spiegel_online_scrape:
     def __init__(self):
-        self.url_root = ''
         self.assets_folder = 'assets'
         self.teaser_file = 'teaser.json'
 
-    def set_root(self, url):
-        self.url_root = url
-
-    def scrape_teaser_article_as_json(self):
-        r = requests.get(self.url_root)
+    def scrape_teaser_article_as_json(self, teaser_list_url):
+        r = requests.get(teaser_list_url)
         soup = BeautifulSoup(r.text, "html.parser")
         teaser_content = soup.find_all("p", { "class" : "article-intro" })
 
