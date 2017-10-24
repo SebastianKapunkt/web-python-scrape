@@ -1,10 +1,9 @@
-import scrape
-import requests
+from scrape import Spiegel_online_scrape
 
 def run():
-    s = scrape.Spiegel_online_scrape()
-    teaser_json = s.scrape_teaser_article_as_json('http://www.spiegel.de/spiegelplus/')
-    s.write_json_to_file_in_assets(s.teaser_file, teaser_json)
-
+    s = Spiegel_online_scrape()
+    json = s.scrape_article_as_json('http://www.spiegel.de/spiegelplus/')
+    s.write_json_to_file_in_assets(s.teaser_file, json)
+   
 if __name__ == '__main__':
     run()
